@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+.todo_item {
+  max-width: 400px;
+  margin: 15px auto;
+}
+
+.add_button {
+  background-color: #af4caa; /* Violet */
+  border: 2px solid #a9d4ab;
+  border-radius: 50%;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+li {
+ border: 2px solid #f5e941; 
+ border-radius: 20%;
+ width: fit-content;
+ height: 18pt;
+}
+ol {
+  align-content: center;
+}
+
