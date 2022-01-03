@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import {TodoItem} from './TodoItem' 
+import {TodoList} from './TodoList';
 
 export function NewItem () {
     const [item, setItem] = useState("");
-    const [listOfTodos, setListOfTodos] = useState(["Вынести мусор","Купить молоко","Заехать на заправку"]);
+    const [listOfTodos, setListOfTodos] = useState(readFromLS());
+   // const [listOfTodos, setListOfTodos] = useState(["Вынести мусор","Купить молоко","Заехать на заправку"]);
     
+    function readFromLS() {
+        return (localStorage["list"]) ? JSON.parse(localStorage["list"]) : [];
+    }
+
     function SetList() {
        let newlist = listOfTodos;
-       newlist.push(item);
-       setListOfTodos(newlist);
+       if (item) {
+            newlist.push(item);
+            setListOfTodos(newlist);
+            localStorage.setItem("list", JSON.stringify(newlist));
+            localStorage.setItem("num_of_todos", newlist.length);
+            setItem("");
+            document.getElementById("todo_item").value = "";
+            document.getElementById("todo_item").focus = true;
+       }
     }  
     
-    let TList = listOfTodos.map((item,index) => <TodoItem index={index} todo={item} />);
     return (
-        <div>
+        <div>  
             <input placeholder="Введите задачу" id="todo_item"
                 onChange={(e) => setItem(e.target.value)}
-                onKeyUp={(e) => e.which==13 ? SetList() : null}>           
+                onKeyUp={(e) => e.which == 13 ? SetList() : null}>           
             </input>
-
-            <button class="add_button" onClick={SetList}>{item}</button>
-            
-            <ol>{TList}</ol>
+            <button class="add_button" onClick={SetList}>Добавить</button>
+            <TodoList list={listOfTodos}/>
         </div>
     )
 }
@@ -49,6 +58,5 @@ export function NewItem () {
           return (
               <button class="add_button" onClick={props.tditem ? save : null}>{props.tditem}</button>
           )*/
-
 
 
