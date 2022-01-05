@@ -75,23 +75,12 @@ function keyPress(event) {
 */
 
 function App() {
- // const [count, setCount] = useState(Number(localStorage.getItem("num_of_todos")));
- // useEffect(() => setCount(Number(localStorage.getItem("num_of_todos"))));
-
- /* return (
-    <div className="App">
-      <h1>Hello, world! My TODOReact project</h1>
-      <NewItem />
-      <ListOfTodos count={count}/>
-    </div>
-  );*/
-  
   return (
     <div className="App">
       <h1>Hello, world! My TODOReact project</h1>
       <NewItem />
     </div>
-  );
+  )
 }
 
 export default App;
