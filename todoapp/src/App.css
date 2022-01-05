@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.todo_item {
+  max-width: 400px;
+  margin: 15px auto;
+}
+
+li {
+ border: 2px solid #f5e941; 
+ border-radius: 20%;
+ width: fit-content;
+ height: 18pt;
+ align-content: center;
+}
