@@ -1,10 +1,10 @@
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-export function TodoList({list, delet}) {
+export function TodoList({list, deleteItem}) {
   return (
     <ol>
-      {list.map((item,index) => <TodoItem id={index} todo={item} delet={delet}/>)} 
+      {list.map((item,index) => <TodoItem key={index} id={index} todo={item} deleteItem={deleteItem}/>)} 
     </ol>
   )
 }
