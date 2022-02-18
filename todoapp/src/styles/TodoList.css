@@ -1,7 +1,12 @@
 ol {
     text-align: center;
-    background-color: blanchedalmond;
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
 }
+
 [data-tooltip] {
   position: relative; /* Относительное позиционирование */ 
 }
@@ -10,7 +15,8 @@ ol {
   content: attr(data-tooltip); /* Выводим текст */
   position: absolute; /* Абсолютное позиционирование */
   width: fit-content; /* Ширина подсказки */
-  background: #3989c9; /* Синий цвет фона */
+  font-size: 12pt;
+  background: rgba(57, 201, 64, 0.8); /* Синий цвет фона */
   color: #fff; /* Цвет текста */
   padding: 0.5em; /* Поля вокруг текста */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
@@ -22,4 +28,5 @@ ol {
 [data-tooltip]:hover::after {
   opacity: 1; /* Показываем подсказку */
   top: 2em; /* Положение подсказки */
+  z-index: 1;
 }

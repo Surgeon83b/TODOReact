@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
-import {NewItem} from './Components/NewItem';
+import {Todo} from './Components/Todo';
 
 function App() {
   return (
     <div className="App">
-      <h1>{'<<My TODOReact project>>'}</h1>
-      <NewItem />
+      <h2>{'Мой список задач'}</h2>
+      <Todo />
     </div>
   )
 }
