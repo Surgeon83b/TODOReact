@@ -1,4 +1,5 @@
 
+
 export const deleteItem = (id, shown, activeTodos, setActiveTodos, deletedTodos, setDeletedTodos, completedTodos, setCompletedTodos, setListOfTodos) => {
   const delList = deletedTodos.slice();
   if (shown === "active") {
@@ -8,7 +9,7 @@ export const deleteItem = (id, shown, activeTodos, setActiveTodos, deletedTodos,
     setActiveTodos(actlist);
     delList.push(delItem);
     setDeletedTodos(delList);
-    localStorage.setItem("list", JSON.stringify(actlist));
+    localStorage.setItem("active", JSON.stringify(actlist));
     localStorage.setItem("deleted", JSON.stringify(delList));
   }
   else if (shown === "deleted") {
@@ -37,7 +38,7 @@ export const completeItem = (id, shown, activeTodos, setActiveTodos, deletedTodo
     setActiveTodos(actList);
     compList.push(compItem);
     setCompletedTodos(compList);
-    localStorage.setItem("list", JSON.stringify(actList));
+    localStorage.setItem("active", JSON.stringify(actList));
     localStorage.setItem("completed", JSON.stringify(compList));
   }
   else if (shown === "deleted") {
@@ -48,7 +49,7 @@ export const completeItem = (id, shown, activeTodos, setActiveTodos, deletedTodo
     setListOfTodos(delList);
     actList.push(resumeItem);
     setActiveTodos(actList);
-    localStorage.setItem("list", JSON.stringify(actList));
+    localStorage.setItem("active", JSON.stringify(actList));
     localStorage.setItem("deleted", JSON.stringify(delList));
   }
   else {
@@ -57,7 +58,18 @@ export const completeItem = (id, shown, activeTodos, setActiveTodos, deletedTodo
     setActiveTodos(actList);
     setCompletedTodos(compList);
     setListOfTodos(compList);
-    localStorage.setItem("list", JSON.stringify(actList));
+    localStorage.setItem("active", JSON.stringify(actList));
     localStorage.setItem("completed", JSON.stringify(compList));
   }
+}
+
+export const setLists = (setLOT, setAT, setDT, setCT) => { 
+if (localStorage["active"]) {
+  setLOT(JSON.parse(localStorage["active"]));
+  setAT(JSON.parse(localStorage["active"]));
+}
+if (localStorage["deleted"])
+  setDT(JSON.parse(localStorage["deleted"]));
+if (localStorage["completed"])
+  setCT(JSON.parse(localStorage["completed"]));
 }

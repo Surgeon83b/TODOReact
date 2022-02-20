@@ -4,6 +4,7 @@ import MyButton from './MyButton';
 import '../App.css';
 import { deleteItem, completeItem } from '../utils/listsModify';
 import { MySelect } from './MySelect';
+import { setLists } from '../utils/listsModify';
 
 export function Todo() {
   const [item, setItem] = useState("");
@@ -15,7 +16,6 @@ export function Todo() {
 
   function handleChange(event) {
     setShown(event.target.value);
-    console.log('shown', event.target.value)
   }
 
   const delItem = (id) => {
@@ -25,13 +25,13 @@ export function Todo() {
   const complItem = (id) => {
     completeItem(id, shown, activeTodos, setActiveTodos, deletedTodos, setDeletedTodos, completedTodos, setCompletedTodos, setListOfTodos)
   }
-  
+
   const setList = () => {
     const newlist = activeTodos.slice();
     newlist.push(item);
     setListOfTodos(newlist);
     setActiveTodos(newlist);
-    localStorage.setItem("list", JSON.stringify(newlist));
+    localStorage.setItem("active", JSON.stringify(newlist));
     setItem("");
   }
 
@@ -43,14 +43,10 @@ export function Todo() {
         break;
       default: setListOfTodos(completedTodos);
     }
-    console.log('list', listOfTodos)
   }, [shown]);
 
   useEffect(() => {
-    if (localStorage["list"]) {
-      setListOfTodos(JSON.parse(localStorage["list"]));
-      setActiveTodos(JSON.parse(localStorage["list"]));
-    }
+    setLists(setListOfTodos, setActiveTodos, setDeletedTodos, setCompletedTodos);
   }, [])
 
   return (
