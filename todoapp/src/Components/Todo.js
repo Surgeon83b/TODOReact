@@ -43,6 +43,7 @@ export function Todo() {
         break;
       default: setListOfTodos(completedTodos);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shown]);
 
   useEffect(() => {
