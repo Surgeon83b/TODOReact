@@ -56,6 +56,7 @@ export function Todo() {
           onChange={(e) => setItem(e.target.value)}
           onKeyUp={(e) => (e.which === 13) && item && setList()}
           value={item}
+          // eslint-disable-next-line eqeqeq
           disabled={shown == 'completed' || shown == 'deleted'}>
         </input>
         <MyButton set={setList} item={item} />
